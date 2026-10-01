@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="sr-Latn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="robots" content="noindex, nofollow"><title>Politika privatnosti · Textablo</title><meta name="description" content="Textablo je aplikacija za beleške za Windows: jednim klikom ista beleška postaje tabla. Besplatno, bez naloga, sve ostaje na tvom računaru."><meta property="og:type" content="website"><meta property="og:title" content="Politika privatnosti · Textablo"><meta property="og:description" content="Textablo je aplikacija za beleške za Windows: jednim klikom ista beleška postaje tabla. Besplatno, bez naloga, sve ostaje na tvom računaru."><meta property="og:image" content="https://mikicarbre.github.io/t-text-updates/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#110e0d"><meta name="color-scheme" content="dark"><link rel="icon" href="/t-text-updates/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/t-text-updates/icon-512.png"><link rel="alternate" hreflang="en" href="https://mikicarbre.github.io/t-text-updates/privacy/"><link rel="alternate" hreflang="sr" href="https://mikicarbre.github.io/t-text-updates/sr/privatnost/"><script src="/t-text-updates/site.js" defer></script><link rel="stylesheet" href="/t-text-updates/_astro/Base.C9EL6Z55.css"></head><body><a class="skip" href="#main">Preskoči na sadržaj</a><header class="nav"><div class="wrap nav-in"><a class="brand" href="/t-text-updates/sr/" aria-label="Textablo"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="60" fill="#9c6b5f"/>
+  <rect x="96" y="58" width="112" height="140" rx="26" fill="#c48d80" transform="rotate(9 152 128)"/>
+  <rect x="46" y="52" width="122" height="148" rx="26" fill="#fff6f3"/>
+  <rect x="72" y="88" width="70" height="22" rx="11" fill="#9c6b5f"/>
+  <rect x="96" y="88" width="22" height="84" rx="11" fill="#9c6b5f"/>
+</svg>
+<span>Textablo</span></a><nav class="nav-links" aria-label="Glavni meni"><a href="/t-text-updates/sr/#features">Mogućnosti</a><a href="/t-text-updates/sr/#phone">Telefon</a><a href="/t-text-updates/sr/#privacy">Privatnost</a><a href="/t-text-updates/sr/#faq">Pitanja</a></nav><div class="nav-end"><a class="nav-lang" href="/t-text-updates/privacy/" hreflang="en" lang="en">English</a><a class="btn btn-sm" href="https://github.com/MikiCarBre/t-text-updates/releases/latest/download/T-Text.zip"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Preuzmi</a></div></div></header><main id="main"><section class="doc"><div class="wrap doc-in"><h1>Politika privatnosti</h1><div class="prose">
+<p><strong>Važi od:</strong> [DATUM OBJAVE] · <strong>Verzija:</strong> 1.0 (nacrt, čeka pregled pravnika)</p>
+<p>Textablo je aplikacija za beleške koja radi na tvom računaru. <strong>Tvoje beleške, slike i zadaci ostaju na tvom računaru.</strong> Nemamo server, nalog ni bazu korisnika, i ne vidimo šta pišeš. Ovde je tačno opisano šta aplikacija čuva, šta i kada šalje van računara, i kako sve možeš da obrišeš.</p>
+<h2>1. Ko je odgovoran</h2>
+<p>Textablo razvija <strong>[IME I PREZIME / NAZIV FIRME]</strong>, [ADRESA], Srbija.
+Kontakt za pitanja o privatnosti: <strong>[E-MAIL ZA PRIVATNOST]</strong>.</p>
+<h2>2. Šta Textablo čuva na tvom računaru</h2>
+<p>Sve što je ispod čuva se <strong>samo lokalno</strong>, u folderu <code>%APPDATA%\T-Text</code>. Ako si u Podešavanjima izabrao folder za sinhronizaciju, beleške su u tom folderu. Mi tim podacima nemamo pristup.</p>
+<table>
+<thead>
+<tr>
+<th>Podaci</th>
+<th>Gde</th>
+<th>Koliko dugo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Beleške, table, zadaci, tagovi, folderi, podsetnici, šabloni</td>
+<td><code>data.json</code></td>
+<td>dok ih ne obrišeš; „Nedavno obrisane” se trajno brišu posle 30 dana</td>
+</tr>
+<tr>
+<td>Slike i screenshotovi</td>
+<td>folder <code>images</code></td>
+<td>dok su u nekoj belešci; nekorišćene slike se brišu automatski</td>
+</tr>
+<tr>
+<td>Tekst pročitan sa slika (za pretragu)</td>
+<td><code>ocr.json</code></td>
+<td>dok postoji slika</td>
+</tr>
+<tr>
+<td>Istorija verzija beleški</td>
+<td>folder <code>history</code></td>
+<td>poslednjih 40 verzija po belešci; kad belešku obrišeš zauvek, briše se i njena istorija</td>
+</tr>
+<tr>
+<td>Automatski snimci (zaštita od gubitka)</td>
+<td>folder <code>snapshots</code></td>
+<td>poslednjih 48 (oko 24 sata rada); snimci pre ažuriranja: poslednja 3; snimci pre uvoza: najviše 5, ne stariji od 30 dana</td>
+</tr>
+<tr>
+<td>Dnevni bekap</td>
+<td>folder <code>bekap</code></td>
+<td>poslednjih 5 dana</td>
+</tr>
+<tr>
+<td>Podešavanja (izgled, prozor, izbori)</td>
+<td><code>settings.json</code></td>
+<td>dok ne obrišeš aplikaciju</td>
+</tr>
+<tr>
+<td>Ključ zaključanih beleški</td>
+<td>na ovom računaru u <code>settings.json</code>, <strong>zaštićen</strong> PIN-om i tajnom koju čuva Windows za tvoj nalog (DPAPI); u <code>vault.json</code> (pored beleški, ide i u bekap) zaštićen samo ključem za oporavak. Sam PIN se nigde ne čuva</td>
+<td><code>vault.json</code> dok ga ne obrišeš; na računaru dok ne ukloniš PIN</td>
+</tr>
+<tr>
+<td>Tvoj Claude API ključ (ako ga uneseš)</td>
+<td><code>settings.json</code>, <strong>šifrovan</strong> pomoću Windows zaštite (DPAPI)</td>
+<td>dok ga ne ukloniš</td>
+</tr>
+<tr>
+<td>Tajna adresa Google / Outlook / iCloud kalendara (ako ga povežeš)</td>
+<td><code>settings.json</code>, <strong>šifrovana</strong> pomoću Windows zaštite (DPAPI)</td>
+<td>dok ne ukloniš kalendar</td>
+</tr>
+<tr>
+<td>Kopija događaja iz tog kalendara (naslov, vreme, mesto), da se kalendar vidi i bez interneta</td>
+<td><code>kalendar.json</code></td>
+<td>dok ne ukloniš kalendar; osvežava se na 30 min</td>
+</tr>
+<tr>
+<td>Beleške zakačene na desktop (koje i gde na ekranu)</td>
+<td><code>settings.json</code></td>
+<td>dok ih ne otkačiš</td>
+</tr>
+<tr>
+<td>Veza sa tvojom Claude aplikacijom (nasumični tajni ključ i naziv kanala, da samo tvoj Claude može da priča sa Textablom)</td>
+<td><code>mcp-token</code>, <code>mcp-pipe</code></td>
+<td>dok ne obrišeš aplikaciju</td>
+</tr>
+<tr>
+<td>Dnevnik grešaka (tehnički zapis, bez teksta beleški)</td>
+<td>folder <code>logs</code></td>
+<td>najviše oko 2 MB, stariji zapisi se brišu</td>
+</tr>
+<tr>
+<td>Tvoje prijave bagova (tekst i priložene slike)</td>
+<td>folder <code>reports</code></td>
+<td>dok ih ne obrišeš</td>
+</tr>
+<tr>
+<td>Izvezene beleške (PDF, Word, Markdown…)</td>
+<td>tamo gde <strong>ti</strong> izabereš pri čuvanju</td>
+<td>tvoji fajlovi</td>
+</tr>
+</tbody></table>
+<p><strong>Zaključane beleške su šifrovane</strong> (AES-256-GCM): tekst i table zaključanih beleški u <code>data.json</code>, u istoriji verzija, u automatskim snimcima i u bekapima mogu da se pročitaju samo uz tvoj PIN (na ovom računaru) ili ključ za oporavak (na bilo kom). Taj ključ vidiš samo jednom, kad napraviš PIN; na drugom računaru ili posle vraćanja bekapa beleške otvaraš njime. Ako izgubiš i PIN i ključ za oporavak, te beleške <strong>niko ne može da vrati</strong>, ni mi. <strong>Nisu šifrovani:</strong> naslovi i tagovi zaključanih beleški (da ih nađeš u listi), slike u njima (folder <code>images</code>), tekst pročitan sa tih slika (<code>ocr.json</code>) i ostale beleške. Kopije koje su nastale pre nego što si belešku zaključao, a koje Textablo ne drži (npr. istorija verzija u OneDrive-u, ranije izvezeni fajlovi), ostaju kakve su bile. Za potpunu zaštitu celog diska koristi BitLocker.</p>
+<p><strong>Šifrovan bekap:</strong> u Podešavanjima → Bekap možeš da napraviš bekap zaštićen lozinkom. Ceo fajl je šifrovan (AES-256-GCM, ključ iz lozinke preko scrypt-a), i bez lozinke ne može da se otvori.</p>
+<h2>3. Kada Textablo šalje nešto van računara</h2>
+<p>Textablo <strong>nema analitiku, praćenje, reklame ni kolačiće</strong>, i ne prodaje niti deli podatke. Internet koristi samo u ovim slučajevima:</p>
+<table>
+<thead>
+<tr>
+<th>Kada</th>
+<th>Kome</th>
+<th>Šta se šalje</th>
+<th>Tvoja kontrola</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Provera novih verzija</strong> (pri pokretanju i na svakih 30 min)</td>
+<td>GitHub (Microsoft)</td>
+<td>zahtev za listu verzija; GitHub vidi tvoju IP adresu i oznaku „Textablo”; <strong>ništa iz beleški</strong></td>
+<td>Podešavanja → Ažuriranja → „samo kad kliknem Proveri”</td>
+</tr>
+<tr>
+<td><strong>Nalepiš link</strong> u belešku ili na tablu</td>
+<td>sajt tog linka (i sajt njegove slike)</td>
+<td>zahtev za stranicom, da bi se prikazao njen naslov; na tabli i opis i slika stranice, koja se čuva u tvom folderu sa slikama; sajt vidi tvoju IP adresu</td>
+<td>ne lepi link, ili obriši karticu</td>
+</tr>
+<tr>
+<td><strong>Uključiš „Telefon (proba)”</strong> u Podešavanjima</td>
+<td>tvoj telefon, preko tvoje kućne mreže (nijedan server na internetu)</td>
+<td>beleške šifrovane (AES-256) ključem koji je samo u QR kodu i na tvojim uređajima; dok je veza uključena, računar na kućnoj mreži nudi mobilnu stranicu Textabla; telefon čuva beleške šifrovane u svom pregledaču</td>
+<td>ne uključuj, ili „Isključi vezu”; „Prekini vezu sa svim telefonima” pravi nov ključ, a na telefonu „Odspoji ovaj telefon” briše sve</td>
+</tr>
+<tr>
+<td><strong>Prevučeš sliku sa sajta</strong></td>
+<td>sajt te slike</td>
+<td>preuzimanje slike</td>
+<td>tvoj izbor</td>
+</tr>
+<tr>
+<td><strong>Claude sa API ključem</strong> (samo ako sam uneseš ključ)</td>
+<td>Anthropic</td>
+<td>tekst beleške, pitanje i slike koje <strong>sam</strong> pošalješ Claude-u</td>
+<td>važe <a href="https://www.anthropic.com/legal/privacy">Anthropic-ova pravila</a>; ključ možeš ukloniti</td>
+</tr>
+<tr>
+<td><strong>Claude aplikacija (MCP)</strong> (samo ako sam povežeš)</td>
+<td>tvoja Claude aplikacija na ovom računaru, pa Anthropic pod tvojim nalogom</td>
+<td>beleške koje Claude pročita ili izmeni na tvoj zahtev</td>
+<td>Podešavanja → isključi vezu</td>
+</tr>
+<tr>
+<td><strong>Prijava baga</strong> (samo kad klikneš „Pošalji”)</td>
+<td>programer Textabla, <strong>privatno</strong>, preko Google-a (prijava se čuva na Google Drive-u programera; Google vidi tvoju IP adresu)</td>
+<td>ono što napišeš, <strong>slike koje sam priložiš</strong> i, ako ostaviš štiklirano, verzija aplikacije, Windows, ekran i poslednje greške iz dnevnika (bez teksta beleški)</td>
+<td>šalje se samo ono što vidiš u prozoru; možeš izabrati „Kopiraj izveštaj” umesto slanja</td>
+</tr>
+<tr>
+<td><strong>Kalendar</strong> (samo ako sam povežeš Google, Outlook ili iCloud kalendar)</td>
+<td>Google (ili Microsoft / Apple)</td>
+<td>zahtev za tim kalendarom, sa njegovom tajnom adresom, pri pokretanju i na svakih 30 min; servis vidi tvoju IP adresu; <strong>ništa iz beleški se ne šalje</strong>; Textablo kalendar samo čita i ništa u njemu ne menja</td>
+<td>Kalendar → Google kalendar → Ukloni</td>
+</tr>
+<tr>
+<td><strong>„Dodaj u Google kalendar”</strong> na podsetniku (samo kad klikneš)</td>
+<td>Google, u tvom browseru</td>
+<td>tekst i vreme podsetnika, koje zatim sam sačuvaš (ili ne) u Google kalendaru</td>
+<td>ne klikći</td>
+</tr>
+<tr>
+<td><strong>Podeli linkom</strong> (samo kad sam napraviš link)</td>
+<td>niko, dok ti ne pošalješ link; kad ga primalac otvori, njegov browser učita stranicu za čitanje sa GitHub-a</td>
+<td>beleška je <strong>u samom linku</strong>, u delu iza znaka #, koji browser ne šalje nijednom serveru; ko ima link, može da pročita belešku</td>
+<td>ne pravi link; link se ne može opozvati, pa ga deli pažljivo</td>
+</tr>
+</tbody></table>
+<p>Ugrađene Windows funkcije koje Textablo poziva, kao što su <strong>diktiranje glasom (Win + H)</strong> i <strong>isecanje ekrana</strong>, rade pod <a href="https://privacy.microsoft.com/">Microsoft-ovim pravilima privatnosti</a>. Čitanje teksta sa slika (OCR), <strong>izvoz</strong> beleški (PDF, Word, Markdown, HTML, tekst) i <strong>uvoz</strong> iz drugih aplikacija (Google Keep, Notion, Evernote, Markdown, Word) rade <strong>na tvom računaru</strong>, bez interneta. Uvoz čita samo fajlove koje sam izabereš.</p>
+<p><strong>Sinhronizacija preko foldera:</strong> ako beleške čuvaš u OneDrive, Google Drive ili Dropbox folderu, taj servis ih prenosi i čuva pod svojim pravilima.</p>
+<h2>4. Pravni osnov</h2>
+<p>Pošto beleške ne napuštaju tvoj računar, mi ih ne obrađujemo. Podatke u prijavama bagova obrađujemo na osnovu tvog <strong>pristanka</strong>: prijavu šalješ sam, i to je dobrovoljno. Cilj je samo da ispravimo greške. Primenjuju se Zakon o zaštiti podataka o ličnosti Republike Srbije („Sl. glasnik RS”, br. 87/2018) i, za korisnike iz EU, Opšta uredba o zaštiti podataka (GDPR).</p>
+<h2>5. Tvoja prava</h2>
+<p>Imaš pravo na pristup, ispravku, brisanje, ograničenje obrade i prenosivost podataka, kao i pravo da povučeš pristanak.</p>
+<ul>
+<li><strong>Beleške su u tvojim rukama.</strong> Izvoz (Podešavanja → Bekap), brisanje i prenos radiš sam, bez nas.</li>
+<li><strong>Prijave bagova:</strong> kopija svake prijave ostaje kod tebe („Moje prijave”). Za uvid, ispravku ili brisanje prijave koju si poslao piši na [E-MAIL ZA PRIVATNOST]; odgovaramo najkasnije za 30 dana. Prijave koje je stara verzija slala na GitHub možeš sam izmeniti ili zatvoriti.</li>
+<li><strong>Pritužba:</strong> možeš je podneti Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti (<a href="https://www.poverenik.rs">poverenik.rs</a>), ili nadzornom organu u svojoj zemlji EU.</li>
+</ul>
+<h2>6. Kako da obrišeš sve</h2>
+<ol>
+<li>U Textablu: Podešavanja → Bekap, ako želiš kopiju.</li>
+<li>Deinstaliraj ili obriši folder aplikacije.</li>
+<li>Obriši folder <code>%APPDATA%\T-Text</code> (beleške, slike, podešavanja, dnevnik).</li>
+<li>Ako koristiš folder za sinhronizaciju, obriši i njega. (Verzije do 1.2.1 su dnevni bekap čuvale u <code>Dokumenti\T-Text bekap</code>; ako je taj folder ostao, obriši i njega.)</li>
+</ol>
+<h2>7. Deca</h2>
+<p>Textablo ne prikuplja podatke ni od koga, pa ni od dece. Za Claude funkcije važi Anthropic-ovo pravilo o najmanjem uzrastu (18 godina).</p>
+<h2>8. Bezbednost</h2>
+<p>Aplikacija se ažurira samo sa našeg zvaničnog GitHub izdanja i pre instalacije proverava <strong>digitalni potpis</strong> preuzetog fajla, pa instalira samo izdanje koje smo zaista mi objavili. Pre svakog ažuriranja pravi kopiju beleški. Veza sa Claude aplikacijom radi samo lokalno, preko zaštićenog kanala dostupnog samo tvom Windows nalogu.</p>
+<h2>9. Izmene</h2>
+<p>Ako promenimo ovu politiku, novu verziju objavljujemo u aplikaciji („Šta je novo”) i ovde, sa novim datumom. Ako Textablo ikada počne da šalje nove vrste podataka (na primer izveštaje o padovima), to će biti <strong>isključeno dok ga sam ne uključiš</strong>.</p>
+</div></div></section></main><footer class="foot"><div class="wrap foot-in"><a class="brand" href="/t-text-updates/sr/" aria-label="Textablo"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="60" fill="#9c6b5f"/>
+  <rect x="96" y="58" width="112" height="140" rx="26" fill="#c48d80" transform="rotate(9 152 128)"/>
+  <rect x="46" y="52" width="122" height="148" rx="26" fill="#fff6f3"/>
+  <rect x="72" y="88" width="70" height="22" rx="11" fill="#9c6b5f"/>
+  <rect x="96" y="88" width="22" height="84" rx="11" fill="#9c6b5f"/>
+</svg>
+<span>Textablo</span></a><nav class="foot-links" aria-label="Podnožje"><a href="/t-text-updates/sr/privatnost/">Politika privatnosti</a><a href="/t-text-updates/sr/novosti/">Novosti</a><a href="/t-text-updates/privacy/" hreflang="en">English</a></nav><p class="foot-note">© 2026 Textablo. Napravljeno s pažnjom u Srbiji.</p></div></footer></body></html>
