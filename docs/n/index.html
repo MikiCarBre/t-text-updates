@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YMSleXveqNMHpHy8o+CrRc66OnXr1G8yXAoFOR3TP5s='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Textablo</title>
+<style>
+:root {
+  --bg: #fffbfa; --panel: #ffffff; --line: #f3eae7; --line-strong: #ecdfdb; --soft: #fcefeb; --soft-2: #f8f5f4; --soft-3: #f3eeec;
+  --accent: #9c6b5f; --accent-text: #a8766a; --accent-soft: #fbe6e0; --text: #141414; --text-2: #3d3a39; --muted: #7d7471;
+  --shadow: 0 10px 30px rgba(120, 72, 60, 0.10), 0 2px 6px rgba(120, 72, 60, 0.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171514; --panel: #1f1c1b; --line: #2e2927; --line-strong: #3a3431; --soft: #2a2321; --soft-2: #242120; --soft-3: #2c2826;
+    --accent: #d09a8c; --accent-text: #d6a295; --accent-soft: #3a2a26; --text: #f1ebe9; --text-2: #d9d0cd; --muted: #a39692;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+  font: 16.5px/1.65 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Roboto, Arial, sans-serif;
+  display: flex; flex-direction: column; align-items: center; padding: 28px 16px 24px;
+}
+.wrap { width: 100%; max-width: 780px; }
+.top { display: flex; align-items: center; gap: 10px; margin: 0 4px 16px; color: var(--muted); font-size: 13.5px; }
+.logo { width: 28px; height: 28px; border-radius: 9px; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 750; font-size: 15px; flex: none; }
+.top b { color: var(--text-2); font-weight: 650; }
+.top .sp { flex: 1; }
+.btn { font: inherit; font-size: 13px; font-weight: 600; border: 0; border-radius: 10px; padding: 7px 12px; background: var(--soft-2); color: var(--text-2); cursor: pointer; }
+.btn:hover { background: var(--soft-3); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 36px 44px 40px; overflow-wrap: anywhere; }
+@media (max-width: 600px) { body { padding: 16px 16px 20px; } .card { padding: 24px 20px 28px; border-radius: 18px; } }
+h1.title { font-size: 32px; line-height: 1.2; letter-spacing: -0.025em; margin: 0 0 6px; font-weight: 750; }
+@media (max-width: 600px) { h1.title { font-size: 26px; } }
+.meta { color: var(--muted); font-size: 13.5px; margin: 0 0 22px; }
+.note > :first-child { margin-top: 0; }
+.note h1, .note h2, .note h3, .note h4, .note h5, .note h6 { line-height: 1.3; letter-spacing: -0.015em; margin: 1.4em 0 0.5em; }
+.note h1 { font-size: 26px; } .note h2 { font-size: 22px; } .note h3 { font-size: 18.5px; } .note h4, .note h5, .note h6 { font-size: 16.5px; }
+.note p { margin: 0 0 0.75em; }
+.note a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; }
+.note img { max-width: 100%; height: auto; border-radius: 14px; display: block; margin: 12px 0; }
+.note .callout { display: flex; gap: 10px; margin: 0 0 0.9em; padding: 12px 16px 12px 12px; border-radius: 10px; background: rgba(120, 100, 95, 0.08); }
+.note .callout::before { content: attr(data-callout); flex: none; }
+.note .callout > * { flex: 1; min-width: 0; margin: 0; }
+.note .callout[data-tone='yellow'] { background: rgba(255, 200, 60, 0.16); }
+.note .callout[data-tone='orange'] { background: rgba(255, 150, 70, 0.16); }
+.note .callout[data-tone='red'] { background: rgba(255, 100, 90, 0.14); }
+.note .callout[data-tone='green'] { background: rgba(90, 200, 120, 0.15); }
+.note .callout[data-tone='blue'] { background: rgba(100, 160, 255, 0.15); }
+.note details.toggle { margin: 0 0 0.9em; }
+.note details.toggle > summary { cursor: pointer; font-weight: 600; }
+.note details.toggle > div { padding-left: 22px; margin-top: 0.4em; }
+.note blockquote { margin: 0 0 0.9em; padding: 2px 0 2px 16px; border-left: 3px solid var(--accent-soft); color: var(--text-2); }
+.note pre { background: var(--soft-2); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; overflow-x: auto; font-size: 14px; line-height: 1.5; }
+.note code { font-family: 'Cascadia Code', Consolas, 'SF Mono', Menlo, monospace; font-size: 0.9em; background: var(--soft-3); padding: 1px 5px; border-radius: 5px; }
+.note pre code { background: none; padding: 0; font-size: 1em; }
+.note mark { background: #ffe7a3; color: #141414; border-radius: 3px; padding: 0 2px; }
+.note hr { border: 0; border-top: 1px solid var(--line-strong); margin: 1.5em 0; }
+.note ul, .note ol { padding-left: 1.5em; margin: 0 0 0.8em; }
+.note li > p { margin: 0.15em 0; }
+.note ul[data-type='taskList'] { list-style: none; padding-left: 2px; }
+.note ul[data-type='taskList'] li { display: flex; gap: 10px; align-items: flex-start; }
+.note ul[data-type='taskList'] li > label { flex: none; margin-top: 0.28em; }
+.note ul[data-type='taskList'] li > label input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); }
+.note ul[data-type='taskList'] li > div { flex: 1; min-width: 0; }
+.note ul[data-type='taskList'] li[data-checked='true'] > div { color: var(--muted); text-decoration: line-through; }
+.note table { border-collapse: collapse; width: 100%; margin: 0 0 1em; font-size: 15px; display: block; overflow-x: auto; }
+.note th, .note td { border: 1px solid var(--line-strong); padding: 7px 10px; vertical-align: top; text-align: left; }
+.note th { background: var(--soft-2); font-weight: 650; }
+.note td p, .note th p { margin: 0; }
+.empty { text-align: center; padding: 48px 16px 40px; }
+.empty .badge { width: 64px; height: 64px; border-radius: 20px; margin: 0 auto 16px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); font-size: 28px; }
+.empty h1 { font-size: 22px; margin: 0 0 8px; letter-spacing: -0.02em; }
+.empty p { color: var(--muted); margin: 0 auto; max-width: 440px; }
+.foot { margin: 20px 4px 0; display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; color: var(--muted); font-size: 13px; }
+.foot a { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="logo" aria-hidden="true">T</span><b>Textablo</b><span class="sp"></span><button class="btn" id="copy" hidden></button></div>
+  <main class="card" id="card"></main>
+  <div class="foot"><span id="privacy"></span><span><span id="made"></span> · <a id="get" href="https://github.com/MikiCarBre/t-text-updates/releases/latest" target="_blank" rel="noopener noreferrer"></a></span></div>
+</div>
+<script>
+/* share-sanitize:start */
+function sanitizeNote(html) {
+  var TAGS = ' p br strong b em i u s strike del code pre a ul ol li blockquote h1 h2 h3 h4 h5 h6 hr img table thead tbody tfoot tr td th mark span div label input sub sup details summary ';
+  var DROP = ' script style template iframe frame frameset object embed noscript svg math title head textarea select button form link meta base audio video canvas ';
+  var VOID = ' br hr img input ';
+  var src = new DOMParser().parseFromString('<!doctype html><body>' + String(html || ''), 'text/html').body;
+  var out = document.createElement('div');
+  var budget = 50000;
+  function has(list, tag) {
+    return list.indexOf(' ' + tag + ' ') >= 0;
+  }
+  function walk(from, to, depth) {
+    for (var n = from.firstChild; n; n = n.nextSibling) {
+      if (--budget < 0) return;
+      if (n.nodeType === 3) {
+        to.appendChild(document.createTextNode(n.nodeValue));
+        continue;
+      }
+      if (n.nodeType !== 1) continue;
+      var tag = String(n.tagName).toLowerCase();
+      if (has(DROP, tag) || depth > 40) continue;
+      if (!has(TAGS, tag)) {
+        walk(n, to, depth + 1);
+        continue;
+      }
+      var el;
+      if (tag === 'a') {
+        var href = (n.getAttribute('href') || '').trim();
+        if (/^(https?:\/\/|mailto:)/i.test(href) && !/[\u0000-\u001f\u007f]/.test(href)) {
+          el = document.createElement('a');
+          el.setAttribute('href', href);
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener noreferrer');
+        } else el = document.createElement('span');
+      } else if (tag === 'img') {
+        var s = (n.getAttribute('src') || '').trim();
+        if (!/^data:image\/(png|jpeg|gif|webp);base64,[a-z0-9+\/=]+$/i.test(s)) continue;
+        el = document.createElement('img');
+        el.setAttribute('src', s);
+        el.setAttribute('alt', (n.getAttribute('alt') || '').slice(0, 300));
+      } else if (tag === 'input') {
+        if ((n.getAttribute('type') || '').toLowerCase() !== 'checkbox') continue;
+        el = document.createElement('input');
+        el.setAttribute('type', 'checkbox');
+        el.setAttribute('disabled', '');
+        if (n.hasAttribute('checked')) el.setAttribute('checked', '');
+      } else el = document.createElement(tag);
+      var dt = n.getAttribute('data-type');
+      if (dt === 'taskList' || dt === 'taskItem') el.setAttribute('data-type', dt);
+      var dc = n.getAttribute('data-checked');
+      if (dc === 'true' || dc === 'false') el.setAttribute('data-checked', dc);
+      var color = n.getAttribute('data-color');
+      if (tag === 'mark' && color && /^#[0-9a-f]{3,8}$/i.test(color)) el.setAttribute('data-color', color);
+      var cls = n.getAttribute('class') || '';
+      if (tag === 'code' && /^language-[\w-]{1,30}$/.test(cls)) el.setAttribute('class', cls);
+      if (tag === 'td' || tag === 'th') {
+        var cs = n.getAttribute('colspan');
+        var rs = n.getAttribute('rowspan');
+        if (cs && /^\d{1,2}$/.test(cs)) el.setAttribute('colspan', cs);
+        if (rs && /^\d{1,2}$/.test(rs)) el.setAttribute('rowspan', rs);
+      }
+      if (tag === 'details') {
+        el.setAttribute('class', 'toggle');
+        if (n.hasAttribute('open')) el.setAttribute('open', '');
+      }
+      var icon = n.getAttribute('data-callout');
+      if (tag === 'div' && icon && /^[^\s<>"'&=\\]{1,8}$/.test(icon)) {
+        el.setAttribute('class', 'callout');
+        el.setAttribute('data-callout', icon);
+        var tone = n.getAttribute('data-tone');
+        if (/^(yellow|orange|red|green|blue|gray)$/.test(tone || '')) el.setAttribute('data-tone', tone);
+      }
+      var st = n.getAttribute('start');
+      if (tag === 'ol' && st && /^\d{1,6}$/.test(st)) el.setAttribute('start', st);
+      to.appendChild(el);
+      if (!has(VOID, tag)) walk(n, el, depth + 1);
+    }
+  }
+  walk(src, out, 0);
+  return out;
+}
+/* share-sanitize:end */
+
+(function () {
+  var TEXT = {
+    sr: {
+      privacy: 'Beleška je stigla u samom linku. Ova stranica je ne čuva i ne šalje nikome.',
+      made: 'Napisano u Textablo',
+      get: 'Preuzmi Textablo',
+      copy: 'Kopiraj tekst',
+      copied: 'Kopirano',
+      untitled: 'Bez naslova',
+      updated: 'Izmenjeno {d}',
+      emptyTitle: 'Ovde nema beleške',
+      emptyText: 'Ova stranica prikazuje beleške poslate iz Textabla. Beleška se nalazi u samom linku, iza znaka #. Otvori ceo link koji si dobio.',
+      badTitle: 'Link je oštećen',
+      badText: 'Beleška iz ovog linka ne može da se pročita. Možda je link skraćen pri kopiranju ili slanju. Zamoli pošiljaoca da ga pošalje ponovo, ili da pošalje belešku kao PDF.',
+      oldTitle: 'Browser je prestar',
+      oldText: 'Za prikaz ove beleške treba novija verzija browsera (Chrome, Edge, Firefox ili Safari iz poslednje dve godine).'
+    },
+    en: {
+      privacy: 'This note arrived inside the link itself. This page does not store it or send it anywhere.',
+      made: 'Written in Textablo',
+      get: 'Get Textablo',
+      copy: 'Copy text',
+      copied: 'Copied',
+      untitled: 'Untitled',
+      updated: 'Edited {d}',
+      emptyTitle: 'No note here',
+      emptyText: 'This page shows notes shared from Textablo. The note is inside the link itself, after the # sign. Open the full link you received.',
+      badTitle: 'This link is broken',
+      badText: 'The note in this link can’t be read. The link may have been cut off when it was copied or sent. Ask the sender to send it again, or to send the note as a PDF.',
+      oldTitle: 'This browser is too old',
+      oldText: 'To show this note you need a newer browser (Chrome, Edge, Firefox or Safari from the last two years).'
+    }
+  };
+  var card = document.getElementById('card');
+  var copyBtn = document.getElementById('copy');
+
+  function chrome(lang) {
+    var L = TEXT[lang];
+    document.documentElement.lang = lang === 'sr' ? 'sr-Latn' : 'en';
+    document.getElementById('privacy').textContent = L.privacy;
+    document.getElementById('made').textContent = L.made;
+    document.getElementById('get').textContent = L.get;
+    copyBtn.textContent = L.copy;
+    return L;
+  }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function message(L, icon, title, text) {
+    card.textContent = '';
+    copyBtn.hidden = true;
+    var box = el('div', 'empty');
+    box.appendChild(el('div', 'badge', icon));
+    box.appendChild(el('h1', null, title));
+    box.appendChild(el('p', null, text));
+    card.appendChild(box);
+    document.title = 'Textablo';
+  }
+
+  function fromBase64Url(s) {
+    var b64 = s.replace(/-/g, '+').replace(/_/g, '/');
+    var bin = atob(b64 + '==='.slice((b64.length + 3) % 4));
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  async function inflate(bytes) {
+    var reader = new Response(bytes).body.pipeThrough(new DecompressionStream('deflate-raw')).getReader();
+    var parts = [];
+    var total = 0;
+    for (;;) {
+      var r = await reader.read();
+      if (r.done) break;
+      total += r.value.length;
+      if (total > 30 * 1024 * 1024) throw new Error('too big');
+      parts.push(r.value);
+    }
+    var all = new Uint8Array(total);
+    var at = 0;
+    for (var j = 0; j < parts.length; j++) {
+      all.set(parts[j], at);
+      at += parts[j].length;
+    }
+    return new TextDecoder().decode(all);
+  }
+
+  function formatDate(ts, lang) {
+    try {
+      return new Intl.DateTimeFormat(lang === 'sr' ? 'sr-Latn' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(ts));
+    } catch (e) {
+      return new Date(ts).toDateString();
+    }
+  }
+
+  async function render() {
+    var guess = /^sr|^hr|^bs|^me/i.test(navigator.language || '') ? 'sr' : 'en';
+    var hash = location.hash.replace(/^#/, '');
+    if (!hash) return message(chrome(guess), '✉', TEXT[guess].emptyTitle, TEXT[guess].emptyText);
+    if (typeof DecompressionStream === 'undefined') return message(chrome(guess), '!', TEXT[guess].oldTitle, TEXT[guess].oldText);
+    var note;
+    try {
+      var m = /^1\.([A-Za-z0-9_-]+)$/.exec(hash.trim());
+      if (!m) throw new Error('format');
+      note = JSON.parse(await inflate(fromBase64Url(m[1])));
+      if (!note || note.v !== 1) throw new Error('version');
+    } catch (e) {
+      return message(chrome(guess), '?', TEXT[guess].badTitle, TEXT[guess].badText);
+    }
+    var lang = note.lang === 'en' ? 'en' : 'sr';
+    var L = chrome(lang);
+    var title = typeof note.title === 'string' && note.title.trim() ? note.title.trim().slice(0, 500) : L.untitled;
+    var body = sanitizeNote(typeof note.html === 'string' ? note.html : '');
+    body.className = 'note';
+    var marks = body.querySelectorAll('mark[data-color]');
+    for (var i = 0; i < marks.length; i++) marks[i].style.backgroundColor = marks[i].getAttribute('data-color');
+    card.textContent = '';
+    card.appendChild(el('h1', 'title', title));
+    var when = Number(note.updated) || Number(note.created);
+    if (when > 0) card.appendChild(el('p', 'meta', L.updated.replace('{d}', formatDate(when, lang))));
+    card.appendChild(body);
+    document.title = title + ' · Textablo';
+    copyBtn.hidden = !navigator.clipboard;
+    copyBtn.onclick = function () {
+      navigator.clipboard.writeText(title + '\n\n' + body.innerText).then(function () {
+        copyBtn.textContent = L.copied;
+        setTimeout(function () { copyBtn.textContent = L.copy; }, 1600);
+      });
+    };
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
+</body>
+</html>
