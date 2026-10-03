@@ -29,7 +29,7 @@ for (const sec of document.querySelectorAll('[data-unfold]')) {
   ];
   const LINKS_NARROW = [
     [0, 1],
-    [1, 4],
+    [1, 2],
   ];
   const paths = LINKS_WIDE.map(() => {
     const p = document.createElementNS(NS, 'path');
@@ -55,7 +55,7 @@ for (const sec of document.querySelectorAll('[data-unfold]')) {
       const [x, y, s] = (el.dataset[narrow ? 'boardM' : 'board'] || '0 0 1').split(' ').map(Number);
       return { el, x0: r.left - b.left, y0: r.top - b.top, w: r.width, h: r.height, x1: (x / 100) * b.width, y1: (y / 100) * b.height, s };
     });
-    geo = { w: b.width, h: b.height, cards, links: narrow ? LINKS_NARROW : LINKS_WIDE };
+    geo = { w: b.width, h: b.height, cards, narrow, links: narrow ? LINKS_NARROW : LINKS_WIDE };
   };
 
   const render = () => {
@@ -122,7 +122,8 @@ for (const sec of document.querySelectorAll('[data-unfold]')) {
     note.style.setProperty('--frame', ease(seg(p, 0.6, 0.7)).toFixed(3));
 
     // present: the view flies into the frame
-    const z = ease(seg(p, 0.76, 0.92));
+    // on a phone the board already fills the screen: the story ends at "connect", no zoom into the frame
+    const z = geo.narrow ? 0 : ease(seg(p, 0.76, 0.92));
     const S = Math.min((w * 0.9) / fw, (h * 0.84) / fh);
     const tx = w / 2 - (fx + fw / 2) * S;
     const ty = h / 2 - (fy + fh / 2) * S;
@@ -137,7 +138,7 @@ for (const sec of document.querySelectorAll('[data-unfold]')) {
     sticky.style.opacity = (se * (1 - z)).toFixed(3);
     svg.style.opacity = away;
 
-    const step = p < 0.06 ? 0 : p < 0.44 ? 1 : p < 0.74 ? 2 : 3;
+    const step = p < 0.06 ? 0 : p < 0.44 ? 1 : p < 0.74 || geo.narrow ? 2 : 3;
     steps.forEach((li, i) => {
       li.classList.toggle('on', i === step);
       li.classList.toggle('past', i < step);
