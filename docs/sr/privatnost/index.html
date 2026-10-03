@@ -6,11 +6,11 @@
   <rect x="96" y="88" width="22" height="84" rx="11" fill="#9c6b5f"/>
 </svg>
 <span>Textablo</span></a><nav class="nav-links" aria-label="Glavni meni"><a href="/t-text-updates/sr/#features">Mogućnosti</a><a href="/t-text-updates/sr/#phone">Telefon</a><a href="/t-text-updates/sr/#privacy">Privatnost</a><a href="/t-text-updates/sr/#faq">Pitanja</a></nav><div class="nav-end"><a class="btn btn-sm" href="https://github.com/MikiCarBre/t-text-updates/releases/latest/download/Textablo.zip"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Preuzmi</a></div></div></header><main id="main"><section class="doc"><div class="wrap doc-in"><h1>Politika privatnosti</h1><div class="prose">
-<p><strong>Važi od:</strong> [DATUM OBJAVE] · <strong>Verzija:</strong> 1.0 (nacrt, čeka pregled pravnika)</p>
+<p><strong>Važi od:</strong> 3. oktobar 2026. · <strong>Verzija:</strong> 1.0 (nacrt, čeka pregled pravnika)</p>
 <p>Textablo je aplikacija za beleške koja radi na tvom računaru. <strong>Tvoje beleške, slike i zadaci ostaju na tvom računaru.</strong> Nemamo server, nalog ni bazu korisnika, i ne vidimo šta pišeš. Ovde je tačno opisano šta aplikacija čuva, šta i kada šalje van računara, i kako sve možeš da obrišeš.</p>
 <h2>1. Ko je odgovoran</h2>
-<p>Textablo razvija <strong>[IME I PREZIME / NAZIV FIRME]</strong>, [ADRESA], Srbija.
-Kontakt za pitanja o privatnosti: <strong>[E-MAIL ZA PRIVATNOST]</strong>.</p>
+<p>Textablo razvija <strong>Mihajlo Momčilović</strong>, Srbija.
+Kontakt za pitanja o privatnosti: <strong><a href="mailto:mihajlomomcilovic963@gmail.com">mihajlomomcilovic963@gmail.com</a></strong>.</p>
 <h2>2. Šta Textablo čuva na tvom računaru</h2>
 <p>Sve što je ispod čuva se <strong>samo lokalno</strong>, u folderu <code>%APPDATA%\T-Text</code>. Ako si u Podešavanjima izabrao folder za sinhronizaciju, beleške su u tom folderu. Mi tim podacima nemamo pristup.</p>
 <table>
@@ -103,6 +103,7 @@ Kontakt za pitanja o privatnosti: <strong>[E-MAIL ZA PRIVATNOST]</strong>.</p>
 </tr>
 </tbody></table>
 <p><strong>Zaključane beleške su šifrovane</strong> (AES-256-GCM): tekst i table zaključanih beleški u <code>data.json</code>, u istoriji verzija, u automatskim snimcima i u bekapima mogu da se pročitaju samo uz tvoj PIN (na ovom računaru) ili ključ za oporavak (na bilo kom). Taj ključ vidiš samo jednom, kad napraviš PIN; na drugom računaru ili posle vraćanja bekapa beleške otvaraš njime. Ako izgubiš i PIN i ključ za oporavak, te beleške <strong>niko ne može da vrati</strong>, ni mi. <strong>Nisu šifrovani:</strong> naslovi i tagovi zaključanih beleški (da ih nađeš u listi), slike u njima (folder <code>images</code>), tekst pročitan sa tih slika (<code>ocr.json</code>) i ostale beleške. Kopije koje su nastale pre nego što si belešku zaključao, a koje Textablo ne drži (npr. istorija verzija u OneDrive-u, ranije izvezeni fajlovi), ostaju kakve su bile. Za potpunu zaštitu celog diska koristi BitLocker.</p>
+<p><strong>Istorija clipboarda</strong> (uključena podrazumevano, Podešavanja → Opšte): dok Textablo radi, pamti šta kopiraš u bilo kojoj aplikaciji (tekst, linkove, slike), da možeš da vratiš nešto starije. Čuva se <strong>samo u memoriji</strong>: nikad se ne upisuje na disk, nikad se ne šalje, i nestaje kad ugasiš Textablo, kad je isključiš ili obrišeš. Ono što password menadžeri označe kao privatno (iste oznake koje poštuje i Windows-ova istorija clipboarda) se preskače. Najviše 60 stavki, od toga 20 slika.</p>
 <p><strong>Šifrovan bekap:</strong> u Podešavanjima → Bekap možeš da napraviš bekap zaštićen lozinkom. Ceo fajl je šifrovan (AES-256-GCM, ključ iz lozinke preko scrypt-a), i bez lozinke ne može da se otvori.</p>
 <h2>3. Kada Textablo šalje nešto van računara</h2>
 <p>Textablo <strong>nema analitiku, praćenje, reklame ni kolačiće</strong>, i ne prodaje niti deli podatke. Internet koristi samo u ovim slučajevima:</p>
@@ -184,7 +185,7 @@ Kontakt za pitanja o privatnosti: <strong>[E-MAIL ZA PRIVATNOST]</strong>.</p>
 <p>Imaš pravo na pristup, ispravku, brisanje, ograničenje obrade i prenosivost podataka, kao i pravo da povučeš pristanak.</p>
 <ul>
 <li><strong>Beleške su u tvojim rukama.</strong> Izvoz (Podešavanja → Bekap), brisanje i prenos radiš sam, bez nas.</li>
-<li><strong>Prijave bagova:</strong> kopija svake prijave ostaje kod tebe („Moje prijave”). Za uvid, ispravku ili brisanje prijave koju si poslao piši na [E-MAIL ZA PRIVATNOST]; odgovaramo najkasnije za 30 dana. Prijave koje je stara verzija slala na GitHub možeš sam izmeniti ili zatvoriti.</li>
+<li><strong>Prijave bagova:</strong> kopija svake prijave ostaje kod tebe („Moje prijave”). Za uvid, ispravku ili brisanje prijave koju si poslao piši na <a href="mailto:mihajlomomcilovic963@gmail.com">mihajlomomcilovic963@gmail.com</a>; odgovaramo najkasnije za 30 dana. Prijave koje je stara verzija slala na GitHub možeš sam izmeniti ili zatvoriti.</li>
 <li><strong>Pritužba:</strong> možeš je podneti Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti (<a href="https://www.poverenik.rs">poverenik.rs</a>), ili nadzornom organu u svojoj zemlji EU.</li>
 </ul>
 <h2>6. Kako da obrišeš sve</h2>
