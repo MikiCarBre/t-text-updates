@@ -51,5 +51,3 @@ Disallow: /
 
 User-agent: *
 Allow: /
-
-Sitemap: https://textablo.com/sitemap.xml
