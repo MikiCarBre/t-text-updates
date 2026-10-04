@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ILFLMMdzOGH3RIDdYvXP+vqQWNMupe3e211Pkh6N66I='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-tcAefbNQTjEsX8h4BvBE+AkOrfva10l9rhw9ism1bgQ='; style-src 'unsafe-inline'; img-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light dark">
@@ -89,7 +89,7 @@ h1.title { font-size: 32px; line-height: 1.2; letter-spacing: -0.025em; margin: 
 <div class="wrap">
   <div class="top"><span class="logo" aria-hidden="true">T</span><b>Textablo</b><span class="sp"></span><button class="btn" id="copy" hidden></button></div>
   <main class="card" id="card"></main>
-  <div class="foot"><span id="privacy"></span><span><span id="made"></span> · <a id="get" href="https://github.com/MikiCarBre/t-text-updates/releases/latest" target="_blank" rel="noopener noreferrer"></a></span></div>
+  <div class="foot"><span id="privacy"></span><span><span id="made"></span> · <a id="get" href="../" target="_blank" rel="noopener noreferrer"></a> · <a id="report" href="#" hidden></a></span></div>
 </div>
 <script>
 /* share-sanitize:start */
@@ -190,7 +190,11 @@ function sanitizeNote(html) {
       badTitle: 'Link je oštećen',
       badText: 'Beleška iz ovog linka ne može da se pročita. Možda je link skraćen pri kopiranju ili slanju. Zamoli pošiljaoca da ga pošalje ponovo, ili da pošalje belešku kao PDF.',
       oldTitle: 'Browser je prestar',
-      oldText: 'Za prikaz ove beleške treba novija verzija browsera (Chrome, Edge, Firefox ili Safari iz poslednje dve godine).'
+      oldText: 'Za prikaz ove beleške treba novija verzija browsera (Chrome, Edge, Firefox ili Safari iz poslednje dve godine).',
+      report: 'Prijavi belešku',
+      reportBody: 'Ova beleška krši zakon ili tuđa prava zato što:\n\n',
+      goneTitle: 'Beleška je uklonjena',
+      goneText: 'Ovaj link je isključen posle prijave, jer sadržaj krši uslove korišćenja Textabla.'
     },
     en: {
       privacy: 'This note arrived inside the link itself. This page does not store it or send it anywhere.',
@@ -205,10 +209,18 @@ function sanitizeNote(html) {
       badTitle: 'This link is broken',
       badText: 'The note in this link can’t be read. The link may have been cut off when it was copied or sent. Ask the sender to send it again, or to send the note as a PDF.',
       oldTitle: 'This browser is too old',
-      oldText: 'To show this note you need a newer browser (Chrome, Edge, Firefox or Safari from the last two years).'
+      oldText: 'To show this note you need a newer browser (Chrome, Edge, Firefox or Safari from the last two years).',
+      report: 'Report this note',
+      reportBody: 'This note breaks the law or someone’s rights because:\n\n',
+      goneTitle: 'This note was removed',
+      goneText: 'This link was turned off after a report, because its content breaks the Textablo terms of use.'
     }
   };
+  // Reports go to the developer by e-mail; a reported link is turned off by adding its id to blocked.txt
+  // next to this page (one id per line). The id is a hash of the link, so the list never holds a note.
+  var CONTACT = 'mihajlomomcilovic963@gmail.com';
   var card = document.getElementById('card');
+  var reportLink = document.getElementById('report');
   var copyBtn = document.getElementById('copy');
 
   function chrome(lang) {
@@ -218,6 +230,8 @@ function sanitizeNote(html) {
     document.getElementById('made').textContent = L.made;
     document.getElementById('get').textContent = L.get;
     copyBtn.textContent = L.copy;
+    reportLink.textContent = L.report;
+    reportLink.hidden = true;
     return L;
   }
 
@@ -267,6 +281,21 @@ function sanitizeNote(html) {
     return new TextDecoder().decode(all);
   }
 
+  async function linkId(hash) {
+    var d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hash));
+    return Array.prototype.map.call(new Uint8Array(d).slice(0, 12), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+
+  async function blocked(id) {
+    try {
+      var res = await fetch('blocked.txt', { cache: 'no-store' });
+      if (!res.ok) return false;
+      return (await res.text()).split(/\s+/).indexOf(id) >= 0;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function formatDate(ts, lang) {
     try {
       return new Intl.DateTimeFormat(lang === 'sr' ? 'sr-Latn' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(ts));
@@ -291,6 +320,15 @@ function sanitizeNote(html) {
     }
     var lang = note.lang === 'en' ? 'en' : 'sr';
     var L = chrome(lang);
+    var id = '';
+    try {
+      id = await linkId(hash.trim());
+    } catch (e) {}
+    if (id && (await blocked(id))) return message(L, '✕', L.goneTitle, L.goneText);
+    if (id) {
+      reportLink.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Textablo report ' + id) + '&body=' + encodeURIComponent(L.reportBody + location.href.slice(0, 200) + '…\nid: ' + id + '\n');
+      reportLink.hidden = false;
+    }
     var title = typeof note.title === 'string' && note.title.trim() ? note.title.trim().slice(0, 500) : L.untitled;
     var body = sanitizeNote(typeof note.html === 'string' ? note.html : '');
     body.className = 'note';
