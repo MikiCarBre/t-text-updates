@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-tcAefbNQTjEsX8h4BvBE+AkOrfva10l9rhw9ism1bgQ='; style-src 'unsafe-inline'; img-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-jMtfNzNPQUliG9fyZXBcognbou276SvmzOXHMPA61Cc='; style-src 'unsafe-inline'; img-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light dark">
@@ -326,7 +326,7 @@ function sanitizeNote(html) {
     } catch (e) {}
     if (id && (await blocked(id))) return message(L, '✕', L.goneTitle, L.goneText);
     if (id) {
-      reportLink.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Textablo report ' + id) + '&body=' + encodeURIComponent(L.reportBody + location.href.slice(0, 200) + '…\nid: ' + id + '\n');
+      reportLink.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Textablo report ' + id) + '&body=' + encodeURIComponent(L.reportBody + 'id: ' + id + '\n');
       reportLink.hidden = false;
     }
     var title = typeof note.title === 'string' && note.title.trim() ? note.title.trim().slice(0, 500) : L.untitled;

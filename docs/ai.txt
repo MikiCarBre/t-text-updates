@@ -1,0 +1,9 @@
+# textablo.com: text and data mining / AI training reservation
+# All content of textablo.com and of the Textablo app (text, images, design, code) is protected by copyright.
+# © 2026 Mihajlo Momčilović (Textablo). All rights reserved.
+# The rights holder expressly reserves the use of this content for text and data mining and for training
+# artificial intelligence or machine learning models, in the sense of Article 4(3) of EU Directive 2019/790.
+# Terms of use: https://textablo.com/terms/
+
+User-Agent: *
+Disallow: /
